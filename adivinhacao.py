@@ -5,10 +5,10 @@ def jogar():
     print("Bem vindo ao jogo de adivinhação")
     print("********************************")
 
-    numero_secreto= random.randrange(1, 101)
+    secret_number= random.randrange(1, 101)
     total_de_tentativas = 0
     rodada = 1
-    pontos = 1000
+    score = 1000
 
     print("Qual é o nível de dificuldade que tu queres?:")
     print("(1)Fácil  (2)Normal   (3)Difícil")
@@ -32,25 +32,25 @@ def jogar():
             print("Você deve digitar um número entre 1 e 100")
             continue
 
-        acertou = chute == numero_secreto
-        maior   = chute > numero_secreto
-        menor   = chute < numero_secreto
+        acertou = chute == secret_number
+        maior   = chute > secret_number
+        menor   = chute < secret_number
 
         if(acertou):
-            print(f"Você acertou e fez {pontos} pontos")
+            print(f"Você acertou e fez {score} pontos")
             break
         else:
             if(maior):
                 print("Tente outro número abaixo desse.")
                 if (rodada == total_de_tentativas):
-                    print(f"O número secreto era {numero_secreto}. Você fez {pontos}")
+                    print(f"O número secreto era {secret_number}. Você fez {score}")
             elif(menor):
                 print("Tente outro número acima desse.")
                 if (rodada == total_de_tentativas):
-                    print(f"O número secreto era {numero_secreto}. Você fez {pontos}")
+                    print(f"O número secreto era {secret_number}. Você fez {score}")
 
-        pontos_perdidos = abs(numero_secreto - chute)
-        pontos = pontos - pontos_perdidos
+        lost_points = abs(secret_number - chute)
+        score = score - lost_points
 
     print("Fim de jogo!")
 
